@@ -1,0 +1,57 @@
+﻿@model SUREBusiness.Models.ViewModels.CreateNoteModel
+
+@{
+    ViewData["Title"] = "Nieuwe notitie aanmaken";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="row">
+    <form asp-controller="Note" asp-action="CreateNote" method="post" class="col-md-12">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div>
+            <h3>Nieuwe notitie aanmaken</h3>
+        </div>
+        <div>
+            <div class="row" style="margin-top:50px;">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Jouw naam</label>
+                        <input class="form-control" asp-for="UserInfo.FullName" />
+                        <span asp-validation-for="UserInfo.FullName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Jouw nummer</label>
+                        <input class="form-control" asp-for="UserInfo.MobileNumber" />
+                        <span asp-validation-for="UserInfo.MobileNumber"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NoteInfo.ManagerId" class="control-label">Manager Naam</label> <br />
+                    <select asp-for="NoteInfo.ManagerId" asp-items="ViewBag.ManagerNames"></select>
+                    <span asp-validation-for="NoteInfo.ManagerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NoteInfo.CategoryName" class="control-label">Hoe snel moeten wij jou bellen?</label> <br />
+                    <select asp-for="NoteInfo.CategoryName" asp-items="ViewBag.CategoriesName"></select>
+                    <span asp-validation-for="NoteInfo.CategoryName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:40px;" class="form-group">
+            <input type="submit" value="Opslaan" class="btn btn-login" />
+        </div>
+        <p>
+            <a href="GetAllNotes" style="color:#9A33F8">Terug</a>
+        </p>
+    </form>
+</div>
