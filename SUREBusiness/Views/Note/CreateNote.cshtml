@@ -1,4 +1,4 @@
-﻿@model SUREBusiness.Models.ViewModels.CreateNoteModel
+﻿@model SUREBusiness.Models.NoteModel
 
 @{
     ViewData["Title"] = "Nieuwe notitie aanmaken";
@@ -17,33 +17,25 @@
             <div class="row" style="margin-top:50px;">
                 <div class="col">
                     <div class="form-group">
-                        <label>Jouw naam</label>
-                        <input class="form-control" asp-for="UserInfo.FullName" />
-                        <span asp-validation-for="UserInfo.FullName"></span>
+                        <label>Voer jouw naam in</label>
+                        <input class="form-control" asp-for="CustomerName" />
+                        <span asp-validation-for="CustomerName"></span>
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col">
-                    <div class="form-group">
-                        <label>Jouw nummer</label>
-                        <input class="form-control" asp-for="UserInfo.MobileNumber" />
-                        <span asp-validation-for="UserInfo.MobileNumber"></span>
-                    </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ManagerName" class="control-label">Manager Naam</label> <br />
+                    <select asp-for="ManagerName" asp-items="ViewBag.ManagerNames"></select>
+                    <span asp-validation-for="ManagerName" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="NoteInfo.ManagerId" class="control-label">Manager Naam</label> <br />
-                    <select asp-for="NoteInfo.ManagerId" asp-items="ViewBag.ManagerNames"></select>
-                    <span asp-validation-for="NoteInfo.ManagerId" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="NoteInfo.CategoryName" class="control-label">Hoe snel moeten wij jou bellen?</label> <br />
-                    <select asp-for="NoteInfo.CategoryName" asp-items="ViewBag.CategoriesName"></select>
-                    <span asp-validation-for="NoteInfo.CategoryName" class="text-danger"></span>
+                    <label asp-for="CategoryName" class="control-label">Hoe snel moeten wij jou bellen?</label> <br />
+                    <select asp-for="CategoryName" asp-items="ViewBag.CategoriesName"></select>
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
                 </div>
             </div>
         </div>

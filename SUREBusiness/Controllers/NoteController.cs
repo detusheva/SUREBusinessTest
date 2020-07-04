@@ -4,8 +4,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SUREBusiness.Data;
 using SUREBusiness.Models;
 using SUREBusiness.Models.ViewModels;
 using SUREBusiness.Repository;
@@ -15,17 +17,11 @@ namespace SUREBusiness.Controllers
     public class NoteController : Controller
     {
         private readonly INoteRepository _noteRepo;
-        private readonly IUserRepository _userRepo;
-        private readonly IManagerRepository _managerRepo;
 
         public NoteController(
-            INoteRepository noteRepo,
-            IUserRepository userRepo,
-            IManagerRepository managerRepo)
+            INoteRepository noteRepo)
         {
             _noteRepo = noteRepo;
-            _userRepo = userRepo;
-            _managerRepo = managerRepo;
         }
 
          List<SelectListItem> categories = new List<SelectListItem>
@@ -34,10 +30,16 @@ namespace SUREBusiness.Controllers
                 new SelectListItem{Value = "Terugbellen spoed", Text = "Terugbellen spoed"}
             };
 
+        List<SelectListItem> managers = new List<SelectListItem>
+            {
+                new SelectListItem{Value = "Ellis", Text = "Ellis"},
+                new SelectListItem{Value = "Julian", Text = "Julian"}
+            };
+
         [HttpGet]
         public async Task<IActionResult> CreateNote()
         {
-            ViewBag.ManagerNames = _managerRepo.GetManagerList();
+            ViewBag.ManagerNames = managers;
             ViewBag.CategoriesName = categories;
 
             return View();
@@ -45,7 +47,7 @@ namespace SUREBusiness.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> CreateNote(CreateNoteModel model)
+        public async Task<IActionResult> CreateNote(NoteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -53,18 +55,30 @@ namespace SUREBusiness.Controllers
             }
 
             ViewBag.CategoriesName = categories;
-            ViewBag.ManagerNames = _managerRepo.GetManagerList();
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            model.UserInfo.UserId = userId;
-            if (model.UserInfo.UserId != null)
-            {
-                await _noteRepo.CreateNote(model.NoteInfo);
-                await _userRepo.UpdateUser(model.UserInfo);
-                return RedirectToRoute(new { controller = "Note", action = "Index" });
-            }
-            return RedirectToRoute(new { controller = "Note", action = "Index" });
+            ViewBag.ManagerNames = managers;
+
+            await _noteRepo.CreateNote(model);
+            return RedirectToRoute(new { controller = "Note", action = "GetAllNotes" });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllNotes()
+        {
+            List<NoteModel> result = await _noteRepo.GetAllNotes();
+            return View(result);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetNoteDetails (int NoteId)
+        {
+            NoteModel result = await _noteRepo.GetNoteById(NoteId);
+            return View(result);
+        }
+        [HttpPost]
+        public async Task ChangeSatatus (NoteModel model)
+        {
+            await _noteRepo.ChangeSatatus(model);
+        }
         public IActionResult Index()
         {
             return View();

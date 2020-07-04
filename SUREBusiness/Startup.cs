@@ -31,12 +31,13 @@ namespace SUREBusiness
         {
 
             services.AddScoped<INoteRepository, NoteRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IManagerRepository, ManagerRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Environment.GetEnvironmentVariable("CONNECTION_STRING")));
+            options.UseSqlServer((Environment.GetEnvironmentVariable("CONNECTION_STRING"))));
+            
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Environment.GetEnvironmentVariable("CONNECTION_STRING")));
 
             services.AddDefaultIdentity<IdentityUser>()
         .AddDefaultUI()

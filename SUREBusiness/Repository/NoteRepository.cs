@@ -24,9 +24,9 @@ namespace SUREBusiness.Repository
                     NoteId = p.NoteId,
                     DateTime = p.DateTime,
                     CategoryName = p.CategoryName,
-                    CustomerId = p.CustomerId,
+                    CustomerName = p.CustomerName,
                     IsCompleted = p.IsCompleted,
-                    ManagerId = p.ManagerId
+                    ManagerName = p.ManagerName
                 });
             return await allNotities.OrderBy(m => m.DateTime).ToListAsync();
         }
@@ -40,9 +40,9 @@ namespace SUREBusiness.Repository
                 NoteId = note.NoteId,
                 DateTime = note.DateTime,
                 CategoryName = note.CategoryName,
-                CustomerId = note.CustomerId,
+                CustomerName = note.CustomerName,
                 IsCompleted = note.IsCompleted,
-                ManagerId = note.ManagerId
+                ManagerName = note.ManagerName
             };
         }
         public async Task CreateNote(NoteModel model)
@@ -50,14 +50,20 @@ namespace SUREBusiness.Repository
             Note newNote = new Note()
             {
                 NoteId = model.NoteId,
-                DateTime = model.DateTime,
+                DateTime = DateTime.Now,
                 CategoryName = model.CategoryName,
-                CustomerId = model.CustomerId,
+                CustomerName = model.CustomerName,
                 IsCompleted = model.IsCompleted,
-                ManagerId = model.ManagerId
+                ManagerName = model.ManagerName
             };
 
             context.Notes.Add(newNote);
+            await context.SaveChangesAsync();
+        }
+        public async Task ChangeSatatus(NoteModel model)
+        {
+            Note note = await context.Notes.Where(p => p.NoteId == model.NoteId).SingleOrDefaultAsync();
+            note.IsCompleted = true;
             await context.SaveChangesAsync();
         }
     }

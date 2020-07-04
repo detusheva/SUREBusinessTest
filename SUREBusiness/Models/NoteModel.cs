@@ -10,8 +10,8 @@ namespace SUREBusiness.Models
     {
         public int NoteId { get; set; }
         public DateTime DateTime { get; set; }
-        public string CustomerId { get; set; }
-        public int ManagerId { get; set; }
+        public string CustomerName { get; set; }
+        public string ManagerName { get; set; }
         public string CategoryName { get; set; }
         public bool IsCompleted { get; set; }
 

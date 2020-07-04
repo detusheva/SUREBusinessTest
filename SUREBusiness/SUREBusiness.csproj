@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-SUREBusiness-DC72A3DC-E548-4656-AFF3-0333303CDDC1</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200704132408_Initial.cs" />
+    <Compile Remove="Migrations\20200704132408_Initial.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />

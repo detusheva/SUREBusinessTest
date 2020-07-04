@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUREBusiness.Data;
 
-namespace SUREBusiness.Data.Migrations
+namespace SUREBusiness.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -231,21 +231,6 @@ namespace SUREBusiness.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SUREBusiness.Data.Manager", b =>
-                {
-                    b.Property<int>("ManagerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ManagerName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ManagerId");
-
-                    b.ToTable("Managers");
-                });
-
             modelBuilder.Entity("SUREBusiness.Data.Note", b =>
                 {
                     b.Property<int>("NoteId")
@@ -256,7 +241,7 @@ namespace SUREBusiness.Data.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateTime")
@@ -265,8 +250,8 @@ namespace SUREBusiness.Data.Migrations
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ManagerId")
-                        .HasColumnType("int");
+                    b.Property<string>("ManagerName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NoteId");
 
@@ -283,12 +268,6 @@ namespace SUREBusiness.Data.Migrations
             modelBuilder.Entity("SUREBusiness.Data.UserIdentity", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MobileNumber")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("UserIdentity");
                 });

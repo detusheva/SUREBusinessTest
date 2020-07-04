@@ -9,5 +9,6 @@ namespace SUREBusiness.Repository
         Task CreateNote(NoteModel model);
         Task<List<NoteModel>> GetAllNotes();
         Task<NoteModel> GetNoteById(int id);
+        Task ChangeSatatus(NoteModel model);
     }
 }

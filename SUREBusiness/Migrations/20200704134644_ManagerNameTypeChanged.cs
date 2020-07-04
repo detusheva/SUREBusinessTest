@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SUREBusiness.Data.Migrations
+namespace SUREBusiness.Migrations
 {
-    public partial class DbStructureChange : Migration
+    public partial class ManagerNameTypeChanged : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "CategoryName",
+                name: "ManagerName",
                 table: "Note",
                 nullable: true,
                 oldClrType: typeof(int),
@@ -17,7 +17,7 @@ namespace SUREBusiness.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "CategoryName",
+                name: "ManagerName",
                 table: "Note",
                 type: "int",
                 nullable: false,

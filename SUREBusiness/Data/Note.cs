@@ -13,10 +13,8 @@ namespace SUREBusiness.Data
         [Key]
         public int NoteId { get; set; }
         public DateTime DateTime { get; set; }
-        [ForeignKey("AspNetUser")]
-        public string CustomerId { get; set; }
-        [ForeignKey("Manager")]
-        public int ManagerId { get; set; }
+        public string CustomerName { get; set; }
+        public string ManagerName { get; set; }
         public string CategoryName { get; set; }
         public bool IsCompleted { get; set; }
     }

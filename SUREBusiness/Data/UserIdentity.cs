@@ -8,7 +8,5 @@ namespace SUREBusiness.Data
 {
     public class UserIdentity : IdentityUser
     {
-        public string FullName { get; set; }
-        public string MobileNumber { get; set; }
     }
 }

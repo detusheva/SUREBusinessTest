@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SUREBusiness.Models.NoteModel>
+
+@{
+    ViewData["Title"] = "Notite lijst";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a href="createNote" class="link">Nieuwe notitie aanmaken</a>
+</p>
+<html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".afgewerkt").click(function () {
+                var checked = $(this).is(':checked')
+                var id = $(this).attr('data-user-id')
+
+                $.post('/Note/ChangeStatus/', { id, checked }, function () {
+                }).done(function (data) {
+                    if (checked) {
+                        alert(`Notitie ${id} is afgewerkt`)
+                    } else {
+                        alert(`Notitie ${id} is niet meer afgewerkt`)
+                    }
+
+                })
+            })
+
+        })
+    </script>
+</head>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Datum + tijd</th>
+        <th>Indiener</th>
+        <th>Toegewezen</th>
+        <th>Categorie</th>
+        <th>Afgewerkt</th>
+        <th>Details</th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.NoteId
+                </td>
+                <td>
+                    @item.DateTime
+                </td>
+                <td>
+                    @item.CustomerName
+                </td>
+                <td>
+                    @item.ManagerName
+                </td>
+                <td>
+                    @item.CategoryName
+                </td>
+                <td>
+                    <div>
+                        <input type="checkbox" class="afgewerkt" data-user-id="@item.NoteId" />
+                    </div>
+                </td>
+                <td class="inhoudtekst">
+                    @Html.ActionLink("Details", "GetNoteDetails", new { NoteId = item.NoteId }, new { @class = "link" })
+                </td>
+            </tr>
+        }
+        }
+    </tbody>
+</table>

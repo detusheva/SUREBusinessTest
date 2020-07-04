@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUREBusiness.Data;
 
-namespace SUREBusiness.Data.Migrations
+namespace SUREBusiness.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200703115123_DbStructureRoles")]
-    partial class DbStructureRoles
+    [Migration("20200704132710_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -243,7 +243,7 @@ namespace SUREBusiness.Data.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateTime")
@@ -252,8 +252,8 @@ namespace SUREBusiness.Data.Migrations
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ManagerName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ManagerName")
+                        .HasColumnType("int");
 
                     b.HasKey("NoteId");
 
@@ -270,12 +270,6 @@ namespace SUREBusiness.Data.Migrations
             modelBuilder.Entity("SUREBusiness.Data.UserIdentity", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MobileNumber")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("UserIdentity");
                 });
