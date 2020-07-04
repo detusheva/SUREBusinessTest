@@ -75,9 +75,11 @@ namespace SUREBusiness.Controllers
             return View(result);
         }
         [HttpPost]
-        public async Task ChangeSatatus (NoteModel model)
+        public async Task<JsonResult> ChangeStatus ([FromBody] NoteModel model)
         {
-            await _noteRepo.ChangeSatatus(model);
+            Note note = await _noteRepo.ChangeStatus(model);
+
+            return Json(note);
         }
         public IActionResult Index()
         {

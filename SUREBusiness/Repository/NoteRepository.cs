@@ -60,11 +60,12 @@ namespace SUREBusiness.Repository
             context.Notes.Add(newNote);
             await context.SaveChangesAsync();
         }
-        public async Task ChangeSatatus(NoteModel model)
+        public async Task<Note> ChangeStatus(NoteModel model)
         {
             Note note = await context.Notes.Where(p => p.NoteId == model.NoteId).SingleOrDefaultAsync();
-            note.IsCompleted = true;
+            note.IsCompleted = model.IsCompleted;
             await context.SaveChangesAsync();
+            return note;
         }
     }
 }

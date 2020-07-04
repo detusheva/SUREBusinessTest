@@ -1,4 +1,5 @@
-﻿using SUREBusiness.Models;
+﻿using SUREBusiness.Data;
+using SUREBusiness.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +10,6 @@ namespace SUREBusiness.Repository
         Task CreateNote(NoteModel model);
         Task<List<NoteModel>> GetAllNotes();
         Task<NoteModel> GetNoteById(int id);
-        Task ChangeSatatus(NoteModel model);
+        Task<Note> ChangeStatus(NoteModel model);
     }
 }

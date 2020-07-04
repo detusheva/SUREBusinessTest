@@ -1,31 +1,46 @@
 ﻿@model SUREBusiness.Models.NoteModel
+<html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
 
-<div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td class="inhoudtekst" style="font-weight:bold;">Manager Name</td>
-                <td class="inhoudtekst">@Html.DisplayFor(model => model.ManagerName)</td>
-            </tr>
-            <tr>
-                <td class="inhoudtekst" style="font-weight:bold;">Indiener</td>
-                <td class="inhoudtekst">@Html.DisplayFor(model => model.CustomerName)</td>
-            </tr>
-            <tr>
-                <td class="inhoudtekst" style="font-weight:bold;">Toegewezen</td>
-                <td class="inhoudtekst">@Html.DisplayFor(model => model.CategoryName)</td>
-            </tr>
-            <tr>
-                <td class="inhoudtekst" style="font-weight:bold;">Categorie</td>
-                <td class="inhoudtekst">@Html.DisplayFor(model => model.DateTime)</td>
-            </tr>
-            <tr>
-                <td class="inhoudtekst" style="font-weight:bold;">Afgewerkt</td>
-                <td class="inhoudtekst">@Html.DisplayFor(model => model.IsCompleted)</td>
-            </tr>
-        </thead>
-    </table>
-    <div>
-        <a asp-action="GetAllNotes" style="color:#9A33F8">Terug</a>
+        th, td {
+            padding: 15px;
+        }
+    </style>
+</head>
+</html>
+<table>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td class="inhoudtekst" style="font-weight:bold;">Manager Name</td>
+                    <td class="inhoudtekst">@Html.DisplayFor(model => model.ManagerName)</td>
+                </tr>
+                <tr>
+                    <td class="inhoudtekst" style="font-weight:bold;">Indiener</td>
+                    <td class="inhoudtekst">@Html.DisplayFor(model => model.CustomerName)</td>
+                </tr>
+                <tr>
+                    <td class="inhoudtekst" style="font-weight:bold;">Toegewezen</td>
+                    <td class="inhoudtekst">@Html.DisplayFor(model => model.CategoryName)</td>
+                </tr>
+                <tr>
+                    <td class="inhoudtekst" style="font-weight:bold;">Categorie</td>
+                    <td class="inhoudtekst">@Html.DisplayFor(model => model.DateTime)</td>
+                </tr>
+                <tr>
+                    <td class="inhoudtekst" style="font-weight:bold;">Afgewerkt</td>
+                    <td class="inhoudtekst">@Html.DisplayFor(model => model.IsCompleted)</td>
+                </tr>
+            </thead>
+        </table>
+        <div>
+            <a asp-action="GetAllNotes">Terug</a>
+        </div>
     </div>
-</div>
+</table>

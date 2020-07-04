@@ -15,35 +15,28 @@
         </div>
         <div>
             <div class="row" style="margin-top:50px;">
-                <div class="col">
                     <div class="form-group">
                         <label>Voer jouw naam in</label>
                         <input class="form-control" asp-for="CustomerName" />
                         <span asp-validation-for="CustomerName"></span>
                     </div>
-                </div>
             </div>
-
-            <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="ManagerName" class="control-label">Manager Naam</label> <br />
+                    <label asp-for="ManagerName" class="control-label">Manager</label> <br />
                     <select asp-for="ManagerName" asp-items="ViewBag.ManagerNames"></select>
                     <span asp-validation-for="ManagerName" class="text-danger"></span>
-                </div>
             </div>
-            <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="CategoryName" class="control-label">Hoe snel moeten wij jou bellen?</label> <br />
+                    <label asp-for="CategoryName" class="control-label">Hoe snel moeten wij jou terug bellen?</label> <br />
                     <select asp-for="CategoryName" asp-items="ViewBag.CategoriesName"></select>
                     <span asp-validation-for="CategoryName" class="text-danger"></span>
-                </div>
             </div>
         </div>
         <div style="margin-top:40px;" class="form-group">
             <input type="submit" value="Opslaan" class="btn btn-login" />
         </div>
         <p>
-            <a href="GetAllNotes" style="color:#9A33F8">Terug</a>
+            <a href="GetAllNotes">Terug</a>
         </p>
     </form>
 </div>
