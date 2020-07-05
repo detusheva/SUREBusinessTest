@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SUREBusiness.Models;
 
 namespace SUREBusiness.Controllers
 {

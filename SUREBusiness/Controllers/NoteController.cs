@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SUREBusiness.Data;
@@ -8,6 +9,7 @@ using SUREBusiness.Repository;
 
 namespace SUREBusiness.Controllers
 {
+    [Authorize]
     public class NoteController : Controller
     {
         private readonly INoteRepository _noteRepo;
@@ -40,7 +42,6 @@ namespace SUREBusiness.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Add(NoteModel model)
         {
             if (!ModelState.IsValid)
