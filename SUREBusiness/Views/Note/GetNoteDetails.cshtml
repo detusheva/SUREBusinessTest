@@ -18,24 +18,32 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td class="inhoudtekst" style="font-weight:bold;">Manager Name</td>
-                    <td class="inhoudtekst">@Html.DisplayFor(model => model.ManagerName)</td>
+                    <td style="font-weight:bold;">Manager Name</td>
+                    <td>@Html.DisplayFor(model => model.ManagerName)</td>
                 </tr>
                 <tr>
-                    <td class="inhoudtekst" style="font-weight:bold;">Indiener</td>
-                    <td class="inhoudtekst">@Html.DisplayFor(model => model.CustomerName)</td>
+                    <td style="font-weight:bold;">Indiener</td>
+                    <td>@Html.DisplayFor(model => model.CustomerName)</td>
                 </tr>
                 <tr>
-                    <td class="inhoudtekst" style="font-weight:bold;">Toegewezen</td>
-                    <td class="inhoudtekst">@Html.DisplayFor(model => model.CategoryName)</td>
+                    <td style="font-weight:bold;">Toegewezen</td>
+                    <td>@Html.DisplayFor(model => model.CategoryName)</td>
                 </tr>
                 <tr>
-                    <td class="inhoudtekst" style="font-weight:bold;">Categorie</td>
-                    <td class="inhoudtekst">@Html.DisplayFor(model => model.DateTime)</td>
+                    <td style="font-weight:bold;">Categorie</td>
+                    <td>@Html.DisplayFor(model => model.DateTime)</td>
                 </tr>
                 <tr>
-                    <td class="inhoudtekst" style="font-weight:bold;">Afgewerkt</td>
-                    <td class="inhoudtekst">@Html.DisplayFor(model => model.IsCompleted)</td>
+                    <td style="font-weight:bold;">Afgewerkt</td>
+                    <td>@Html.DisplayFor(model => model.IsCompleted)</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">Mobiel nummer</td>
+                    <td>@Html.DisplayFor(model => model.MobileNumber)</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">Opmerkingen</td>
+                    <td>@Html.DisplayFor(model => model.Description)</td>
                 </tr>
             </thead>
         </table>

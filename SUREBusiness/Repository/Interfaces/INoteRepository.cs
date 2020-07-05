@@ -7,7 +7,7 @@ namespace SUREBusiness.Repository
 {
     public interface INoteRepository
     {
-        Task CreateNote(NoteModel model);
+        Task Add(NoteModel model);
         Task<List<NoteModel>> GetAllNotes();
         Task<NoteModel> GetNoteById(int id);
         Task<Note> ChangeStatus(NoteModel model);

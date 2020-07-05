@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SUREBusiness.Data;
 using SUREBusiness.Models;
-using SUREBusiness.Models.ViewModels;
 using SUREBusiness.Repository;
 
 namespace SUREBusiness.Controllers
@@ -37,7 +31,7 @@ namespace SUREBusiness.Controllers
             };
 
         [HttpGet]
-        public async Task<IActionResult> CreateNote()
+        public async Task<IActionResult> Add()
         {
             ViewBag.ManagerNames = managers;
             ViewBag.CategoriesName = categories;
@@ -47,7 +41,7 @@ namespace SUREBusiness.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> CreateNote(NoteModel model)
+        public async Task<IActionResult> Add(NoteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +51,7 @@ namespace SUREBusiness.Controllers
             ViewBag.CategoriesName = categories;
             ViewBag.ManagerNames = managers;
 
-            await _noteRepo.CreateNote(model);
+            await _noteRepo.Add(model);
             return RedirectToRoute(new { controller = "Note", action = "GetAllNotes" });
         }
 

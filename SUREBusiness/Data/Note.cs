@@ -17,5 +17,7 @@ namespace SUREBusiness.Data
         public string ManagerName { get; set; }
         public string CategoryName { get; set; }
         public bool IsCompleted { get; set; }
+        public string MobileNumber { get; set; }
+        public string Description { get; set; }
     }
 }

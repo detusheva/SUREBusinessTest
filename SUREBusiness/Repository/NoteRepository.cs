@@ -26,7 +26,9 @@ namespace SUREBusiness.Repository
                     CategoryName = p.CategoryName,
                     CustomerName = p.CustomerName,
                     IsCompleted = p.IsCompleted,
-                    ManagerName = p.ManagerName
+                    ManagerName = p.ManagerName,
+                    MobileNumber = p.MobileNumber,
+                    Description = p.Description
                 });
             return await allNotities.OrderBy(m => m.DateTime).ToListAsync();
         }
@@ -42,10 +44,12 @@ namespace SUREBusiness.Repository
                 CategoryName = note.CategoryName,
                 CustomerName = note.CustomerName,
                 IsCompleted = note.IsCompleted,
-                ManagerName = note.ManagerName
+                ManagerName = note.ManagerName,
+                MobileNumber = note.MobileNumber,
+                Description = note.Description
             };
         }
-        public async Task CreateNote(NoteModel model)
+        public async Task Add(NoteModel model)
         {
             Note newNote = new Note()
             {
@@ -54,7 +58,9 @@ namespace SUREBusiness.Repository
                 CategoryName = model.CategoryName,
                 CustomerName = model.CustomerName,
                 IsCompleted = model.IsCompleted,
-                ManagerName = model.ManagerName
+                ManagerName = model.ManagerName,
+                MobileNumber = model.MobileNumber,
+                Description = model.Description
             };
 
             context.Notes.Add(newNote);

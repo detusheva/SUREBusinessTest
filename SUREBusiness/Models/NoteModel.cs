@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,11 +12,17 @@ namespace SUREBusiness.Models
     {
         public int NoteId { get; set; }
         public DateTime DateTime { get; set; }
+        [Required(ErrorMessage = "Een naam is verplicht")]
+        [DisplayName("Achternaam")]
         public string CustomerName { get; set; }
         public string ManagerName { get; set; }
         public string CategoryName { get; set; }
         public bool IsCompleted { get; set; }
-
-        public IEnumerable<SelectListItem> Managers { get; set; }
+        [Required(ErrorMessage = "Een telefoonnummer is verplicht")]
+        [DisplayName("Telefoonnummer")]
+        [DataType(DataType.PhoneNumber)]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Geen geldig telefoonnummer")]
+        public string MobileNumber { get; set; }
+        public string Description { get; set; }
     }
 }
